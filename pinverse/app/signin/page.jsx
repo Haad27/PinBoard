@@ -59,6 +59,7 @@ const res = await signIn("credentials",{
                     <p className='text-center text-grey-500 mb-6'>
                         Access PinBoard best idea with a free account
                     </p>
+                    
                     </div>
                 </div>
             </>
