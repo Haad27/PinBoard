@@ -60,6 +60,37 @@ const res = await signIn("credentials",{
                         Access PinBoard best idea with a free account
                     </p>
                     
+                    <input type="text" placeholder="Username" className="w-full p-3 border border-gray-300 rounded-lg mb-3 focus:outline-none focus:ring-2 
+                     focus:ring-blue-500" value={username} onChange={(e) => setUsername(e.target.value)} />
+
+                    <input type="password" placeholder="Password" className="w-full p-3 border border-gray-300 rounded-lg mb-3 focus:outline-none focus:ring-2 
+                     focus:ring-blue-500" value={password} onChange={(e) => SetPassword(e.target.value)} />
+
+                    <button onClick={handleCredentialLogin} className='w-full p-3 bg-blue-500 text-white rounded-lg mb-4 hover:bg-red-600 transition-all duration-300'>
+                        {
+                            loading ? <ClipLoader color={"#fff"} size={20} />
+                                : "Continue"
+                        }
+                    </button>
+
+                    <div className='flex items-center justify-center space-x-2 mb-4'>
+                        <div className='h-px bg-gray-300 w-full'></div>
+                        <p className='text-gray-500 text-sm'>OR</p>
+                        <div className='h-px bg-gray-300 w-full'></div>
+                    </div>
+
+                    <button
+                        onClick={() => signIn("github", { callbackUrl: "/" })}
+                        className='w-full flex items-center justify-center gap-3 p-3 bg-black text-white rounded-lg font-medium hover:bg-gray-900 transition duration-200'
+                    >
+                        <img
+                            src="/logoo.png"
+                            alt="Github"
+                            className="w-5 h-5"
+                        />
+                        <span>Continue with GitHub</span>
+                    </button>
+
                     </div>
                 </div>
             </>
