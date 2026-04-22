@@ -55,6 +55,23 @@ const Navbar = () => {
 rounded-full w-8 h-8 p-1 transition-all duration-300 hover:bg-blue-700 cursor-pointer'/>
           </div>
         </div>
+        <div className='flex items-center gap-4'>
+          <div className='flex items-center space-x-4'>
+            <div className='relative' ref={dropdownRef}
+              onMouseEnter={() => setDropdownOpen(true)}
+              onMouseLeave={() => setDropdownOpen(false)}
+            >
+              <img
+                src={session?.user?.image || "/avatar.png"}
+                alt={"Avatar"}
+                width={50} height={50}
+                className='w-10 h-10 rounded-full object-cover cursor-pointer'
+                onClick={() => setDropdownOpen(prev => !prev)}
+                priority={true}
+              />
+        </div>
+        </div>
+        </div>
         </div>
     </nav>
   )
