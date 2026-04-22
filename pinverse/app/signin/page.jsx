@@ -20,28 +20,27 @@ const page = () => {
             router.push("/");
         }
     },[session,router])
-    const handleCredentialLogin= async ()=> {
-    console.log("credential login")
-    setLoading(true);
-    if(!username || !password){
-        toast.error("please provide your cridentials");
-        setLoading(false);
-        return;
-    }
-}
+    const handleCredentialLogin = async () => {
+        console.log("credential login");
+        setLoading(true);
+        if (!username || !password) {
+            toast.error("please provide your cridentials");
+            setLoading(false);
+            return;
+        }
 
-const res = await signIn("credentials",{
-        redirect:false,
-        username,
-        password
-    }) ;
-    setLoading(false);
-    if(res?.ok){
-        router.push("/");
-    } else {
-        toast.error("Invalid credentials");
-    }
-    }
+        const res = await signIn("credentials", {
+            redirect: false,
+            username,
+            password
+        });
+        setLoading(false);
+        if (res?.ok) {
+            router.push("/");
+        } else {
+            toast.error("Invalid credentials");
+        }
+    };
 
       return (
         <>
@@ -90,11 +89,27 @@ const res = await signIn("credentials",{
                         />
                         <span>Continue with GitHub</span>
                     </button>
-
+                     <button
+                        onClick={() => signIn("google", { callbackUrl: "/" })}
+                        className='w-full flex items-center justify-center gap-3 p-3 bg-gray-800 border border-gray-700 text-white rounded-lg font-medium hover:bg-gray-700 transition duration-200 mt-2'
+                    >
+                        <img
+                            src="/google.png"
+                            alt="Google"
+                            className="w-5 h-5"
+                        />
+                        <span>Continue with Google</span>
+                    </button>
+                    <p className="text-center text-sm mt-4 text-gray-400">
+                        Already have an account?{" "}
+                        <Link href="/register" className="text-blue-400 hover:underline">Register</Link>
+                        </p>
                     </div>
                 </div>
             </>
-        )
+        );
                    
 
 }
+
+export default page;
