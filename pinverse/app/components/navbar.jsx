@@ -43,16 +43,14 @@ const Navbar = () => {
             Create Pin
           </Link>
         </div>
-         <div className='hidden sm:block w-1/2 '>
+        <div className='hidden sm:block w-1/2 '>
           <div className='relative'>
-            <input type="text" placeholder='search' className='w-full py-2 px-4 rounded-full border border-gray-300 focus:outline-none
-   focus:ring-2 focus:ring-blue-500 pr-12'
+            <input type="text" placeholder='search' className='w-full py-2 px-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 pr-12'
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
             />
-            <Search onClick={handleSearch} className='absolute right-4 top-1/2 transform -translate-y-1/2
-rounded-full w-8 h-8 p-1 transition-all duration-300 hover:bg-blue-700 cursor-pointer'/>
+            <Search onClick={handleSearch} className='absolute right-4 top-1/2 transform -translate-y-1/2 rounded-full w-8 h-8 p-1 transition-all duration-300 hover:bg-blue-700 cursor-pointer'/>
           </div>
         </div>
         <div className='flex items-center gap-4'>
@@ -81,23 +79,36 @@ rounded-full w-8 h-8 p-1 transition-all duration-300 hover:bg-blue-700 cursor-po
                   </div>
                 )
               }
-        </div>
-        </div>
-         <Menu className='text-blue-500 cursor-pointer block sm:hidden'
+            </div>
+          </div>
+          <Menu className='text-blue-500 cursor-pointer block sm:hidden'
             onClick={() => setIsMenuOpen(!isMenuOpen)} size={40} />
 
       
-      {/* //user interface for mbile */}
-      <div
-        className={`${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0'} overflow-hidden transition-all duration-300 ease-in-out sm:hidden mt-4`}
-      >
-        <Link href="/" className='block text-gray-800 text-xl py-2 hover:text-blue-500'>
-          Home
-        </Link>
+          {/* user interface for mobile */}
+          <div
+            className={`${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0'} overflow-hidden transition-all duration-300 ease-in-out sm:hidden mt-4`}
+          >
+            <Link href="/" className='block text-gray-800 text-xl py-2 hover:text-blue-500'>
+              Home
+            </Link>
+
+            <Link href="/upload-pin" className='block text-gray-800 text-xl hover:text-blue-500'>
+              Create Pin
+            </Link>
+            <div className='p-2 relative mt-4'>
+              <input type="text" placeholder='search' className='w-full py-2 px-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 pr-12'
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+              />
+              <Search onClick={handleSearch} className='absolute right-4 top-1/2 transform -translate-y-1/2 rounded-full w-8 h-8 p-1 transition-all duration-300 hover:bg-blue-700 cursor-pointer'/>
+            </div>
+          </div>
         </div>
-  </div>
       </div>
     </nav>
   )
-
 }
+
+export default Navbar;
