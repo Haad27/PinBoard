@@ -69,10 +69,34 @@ rounded-full w-8 h-8 p-1 transition-all duration-300 hover:bg-blue-700 cursor-po
                 onClick={() => setDropdownOpen(prev => !prev)}
                 priority={true}
               />
+              {
+                dropdownOpen && (
+                  <div className='absolute right-0 w-48 bg-white shadow-lg border rounded-lg z-10'>
+                    <button
+                      onClick={() => signOut({ callbackUrl: "/signin" })}
+                      className="block px-4 py-2 text-blue-500 w-full text-start hover:bg-gray-100"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                )
+              }
         </div>
         </div>
+         <Menu className='text-blue-500 cursor-pointer block sm:hidden'
+            onClick={() => setIsMenuOpen(!isMenuOpen)} size={40} />
+
+      
+      {/* //user interface for mbile */}
+      <div
+        className={`${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0'} overflow-hidden transition-all duration-300 ease-in-out sm:hidden mt-4`}
+      >
+        <Link href="/" className='block text-gray-800 text-xl py-2 hover:text-blue-500'>
+          Home
+        </Link>
         </div>
-        </div>
+  </div>
+      </div>
     </nav>
   )
 
